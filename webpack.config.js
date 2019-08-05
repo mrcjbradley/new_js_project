@@ -1,27 +1,54 @@
 const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
-    entry: path.resolve(__dirname, 'src', 'index.jsx'),
-    output: {
-        path: path.resolve(__dirname, 'output'),
-        filename: 'bundle.js'
-    },
-    resolve: {
-        extensions: ['.js', '.jsx']
-    },
-    module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                use: {
-                    loader: "babel-loader", 
-                    options: { presets: ["env", "react"] }
+const outputDir = './dist';
+const cssOutput = 'app.css';
+// const extractCSS = new ExtractTextPlugin('styles.min.css');
+
+
+module.exports =  (env) => {
+    return [ {
+        entry: path.resolve(__dirname, 'src', 'index.jsx'),
+        output: {
+            path: path.join(__dirname, outputDir),
+            filename: '[name].js',
+            publicPath: '/dist/'
+        },
+        resolve: {
+            extensions: ['.js', '.jsx']
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.jsx?$/,
+                    use: {
+                        loader: "babel-loader", 
+                        options: { presets: ["env", "react"] }
+                    }
+                },
+                {
+                    test: /\.css$/,
+                    use: ExtractTextPlugin.extract({
+                        use: ['css-loader'],
+                        fallback: 'style-loader'
+                    })
+                },
+                {
+                    test: /\.scss/,
+                    use: ExtractTextPlugin.extract({
+                            use: ['css-loader', 'sass-loader'],
+                            fallback: 'style-loader'
+                    })
                 }
-            },
-            {
-                test: /\.scss/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
-            }
-        ]
-    }
+            ]
+        },
+        plugins: [
+            new ExtractTextPlugin(cssOutput)
+        ],
+        // devServer: {
+        //     contentBase: './src',
+        //     publicPath: './dist'
+        // }
+}];
 };

@@ -9,20 +9,24 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^3.1.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "node-sass": "^4.12.0",
-    "react-dom": "^16.8.6",
     "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "webpack": "^4.39.1"
+    "webpack": "^4.39.1",
+    "webpack-dev-server": "^3.7.2"
   },
   "devDependencies": {
     "babel-loader": "^7.1.5",
     "webpack-cli": "^3.3.6"
   },
   "scripts": {
-    "build": "webpack -p",
-    "start": "webpack --watch-dev"
+    "watch": "webpack --watch --mode=development",
+    "build": "webpack --mode=production --optimize-minimize",
+    "build:dev": "webpack --mode=development",
+    "dev": "webpack-dev-server --hot --inline"
   },
   "repository": {
     "type": "git",
