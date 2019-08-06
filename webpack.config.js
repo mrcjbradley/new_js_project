@@ -49,15 +49,7 @@ module.exports =  (env) => {
         devServer: {
             contentBase: './',
             watchContentBase: true,
-            open: "Google Chrome",
-            // hot: true
-            // publicPath: './'
-            // index: 'index.html'
-            // publicPath: path.join(__dirname,'dist'),
-            // publicPath: path.join(__dirname,'index.html')
-            // openPage: '../index.html'
-            // contentBase: [path.join(__dirname, 'src'), './index.html']//, path.join(__dirname, 'index.h')]
-    
+            open: "Google Chrome"  
 
 }}];
 };
