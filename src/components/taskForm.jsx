@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 function TaskForm (props) {
-    
+
     const [name, setName ] = useState("");
     
     const handleChange = (e) => {
@@ -9,7 +9,9 @@ function TaskForm (props) {
     }
 
     return(
-        <input type="text" value={name} onChange={handleChange}/>
+        <label htmlFor="taskName">
+            <input type="text" value={name} onChange={handleChange}/>
+        </label>
     );
 }
 
