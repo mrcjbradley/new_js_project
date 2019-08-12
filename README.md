@@ -107,6 +107,7 @@ module.exports = {
   ],
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
+    "watch": "webpack --watch --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js  --optimize-minimize"
   },
 ```
