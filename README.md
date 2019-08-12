@@ -56,7 +56,7 @@ module.exports = {
 };
 ```
 
-1. create `webpack.dev.js`
+8. create `webpack.dev.js`
 
 ```javascript
 const merge = require("webpack-merge");
@@ -73,7 +73,7 @@ module.exports = merge(common, {
 });
 ```
 
-1. create `webpack.prod.js`
+9. create `webpack.prod.js`
 
 ```javascript
 const merge = require("webpack-merge");
@@ -85,7 +85,7 @@ module.exports = merge(common, {
 });
 ```
 
-1. create `postcss.config.js`
+10. create `postcss.config.js`
 
 ```javascript
 module.exports = {
@@ -96,7 +96,7 @@ module.exports = {
 };
 ```
 
-1. add in scripts/browserlist
+11. add in scripts/browserlist
 
 ```javascript
 "browserslist": [
