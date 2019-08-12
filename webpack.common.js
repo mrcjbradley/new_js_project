@@ -10,7 +10,7 @@ module.exports = {
     publicPath: "/dist/"
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"] //
   },
   module: {
     rules: [
