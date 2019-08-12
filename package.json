@@ -19,9 +19,17 @@
     "webpack-dev-server": "^3.7.2"
   },
   "devDependencies": {
+    "autoprefixer": "^9.6.1",
     "babel-loader": "^7.1.5",
+    "postcss-loader": "^3.0.0",
     "webpack-cli": "^3.3.6"
   },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ],
   "scripts": {
     "watch": "webpack --watch --mode=development",
     "build": "webpack --mode=production --optimize-minimize",

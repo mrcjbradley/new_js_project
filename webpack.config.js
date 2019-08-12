@@ -1,55 +1,55 @@
-const path = require('path');
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require("path");
+// const webpack = require("webpack");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const outputDir = './dist';
-const cssOutput = 'app.css';
+const outputDir = "./dist";
+// const cssOutput = "app.css";
+// const autoPrefixer = ;
 // const extractCSS = new ExtractTextPlugin('styles.min.css');
 
-
-module.exports =  (env) => {
-    return [ {
-        entry: path.resolve(__dirname, 'src', 'index.jsx'),
-        output: {
-            path: path.join(__dirname, outputDir),
-            filename: '[name].js',
-            publicPath: '/dist/'
-        },
-        resolve: {
-            extensions: ['.js', '.jsx']
-        },
-        module: {
-            rules: [
-                {
-                    test: /\.jsx?$/,
-                    use: {
-                        loader: "babel-loader", 
-                        options: { presets: ["env", "react"] }
-                    }
-                },
-                {
-                    test: /\.css$/,
-                    use: ExtractTextPlugin.extract({
-                        use: ['css-loader'],
-                        fallback: 'style-loader'
-                    })
-                },
-                {
-                    test: /\.scss/,
-                    use: ExtractTextPlugin.extract({
-                            use: ['css-loader', 'sass-loader'],
-                            fallback: 'style-loader'
-                    })
-                }
-            ]
-        },
-        plugins: [
-            new ExtractTextPlugin(cssOutput)
-        ],
-        devServer: {
-            contentBase: './',
-            watchContentBase: true,
-            open: "Google Chrome"  
-
-}}];
+module.exports = env => {
+  return [
+    {
+      entry: path.resolve(__dirname, "src", "index.jsx"),
+      output: {
+        path: path.join(__dirname, outputDir),
+        filename: "[name].js",
+        publicPath: "/dist/"
+      },
+      resolve: {
+        extensions: [".js", ".jsx"]
+      },
+      module: {
+        rules: [
+          {
+            test: /\.jsx?$/,
+            use: {
+              loader: "babel-loader",
+              options: { presets: ["env", "react"] }
+            }
+          },
+          {
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+              use: ["css-loader", "postcss-loader"],
+              fallback: "style-loader"
+            })
+          },
+          {
+            test: /\.scss/,
+            use: ExtractTextPlugin.extract({
+              use: ["css-loader", "sass-loader", "postcss-loader"],
+              fallback: "style-loader"
+            })
+          }
+        ]
+      },
+      plugins: [new ExtractTextPlugin("[name].css"), require("autoprefixer")],
+      devServer: {
+        contentBase: "./",
+        watchContentBase: true,
+        open: "Google Chrome"
+      }
+    }
+  ];
 };
