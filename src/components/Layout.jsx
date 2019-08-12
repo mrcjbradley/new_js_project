@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
-import TaskForm from './taskForm.jsx';
+import React, { Component } from "react";
+import TaskForm from "./taskForm";
+import TaskList from "./taskList";
 
-export default function layout(){
-return(
-        <section>    
-        <h1>New JavaScript Project</h1>
-        <TaskForm />
-        </section>
-        )
+const tasks = [];
+
+export default function layout() {
+  return (
+    <section>
+      <h1>New JavaScript Project</h1>
+      <TaskForm />
+      <TaskList tasks={tasks} />
+    </section>
+  );
 }
-

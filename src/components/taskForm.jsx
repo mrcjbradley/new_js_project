@@ -32,7 +32,7 @@ const Form = () => {
         value={vals.date}
         onChange={handleChange}
       />
-      <button />
+      <input type="submit" value="Submit" />
     </form>
   );
 };
