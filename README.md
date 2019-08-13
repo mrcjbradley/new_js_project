@@ -7,13 +7,13 @@ This is a new JavaScript Project
 1. `git init`
 1. add `/node_modules` to `.gitignore`
 1. `npm init --yes`
-1. `npm install webpack babel-core babel-loader babel-preset-env babel-loader@7 node-sass css-loader sass-loader style-loader extract-text-webpack-plugin webpack-dev-server autoprefixer postcss-loader webpack-cli webpack-merge`
+1. `npm install webpack babel-core babel-loader babel-preset-env babel-loader@7 node-sass css-loader sass-loader style-loader mini-css-extract-plugin webpack-dev-server autoprefixer postcss-loader webpack-cli webpack-merge`
 1. Set up basic file structure
 1. create `webpack.common.js`
 
 ```javascript
 const path = require("path");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const outputDir = "./dist";
 
 module.exports = {
@@ -35,23 +35,48 @@ module.exports = {
           options: { presets: ["env"] } // if we were using React.js, we would include "react"
         }
       },
-      {
+           {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          use: ["css-loader", "postcss-loader"],
-          fallback: "style-loader"
-        })
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // you can specify a publicPath here
+              // by default it uses publicPath in webpackOptions.output
+              publicPath: "../",
+              hmr: process.env.NODE_ENV === "development"
+            }
+          },
+          "css-loader",
+          "postcss-loader"
+        ]
       },
       {
         test: /\.scss/,
-        use: ExtractTextPlugin.extract({
-          use: ["css-loader", "sass-loader", "postcss-loader"],
-          fallback: "style-loader"
-        })
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // you can specify a publicPath here
+              // by default it uses publicPath in webpackOptions.output
+              publicPath: "../",
+              hmr: process.env.NODE_ENV === "development"
+            }
+          },
+          "css-loader",
+          "sass-loader",
+          "postcss-loader"
+        ]
       }
     ]
   },
-  plugins: [new ExtractTextPlugin("[name].css"), require("autoprefixer")]
+  plugins: [new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // all options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css",
+      ignoreOrder: false // Enable to remove warnings about conflicting order
+    }), require("autoprefixer")]
 };
 ```
 
