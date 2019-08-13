@@ -6,7 +6,7 @@ This is a new JavaScript Project
 
 1. `git init`
 1. add `/node_modules` to `.gitignore`
-1. `npm init -yes`
+1. `npm init --yes`
 1. `npm install webpack babel-core babel-loader babel-preset-env babel-loader@7 node-sass css-loader sass-loader style-loader extract-text-webpack-plugin webpack-dev-server autoprefixer postcss-loader webpack-cli webpack-merge`
 1. Set up basic file structure
 1. create `webpack.common.js`
