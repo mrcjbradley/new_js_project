@@ -1,6 +1,174 @@
+@import url(https://use.typekit.net/bfd6vxn.css);/* 1. GLOBAL STYLE */
+/* Reset */
+/* Source: http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline; }
+
+/* remember to define focus styles! */
+:focus {
+  outline: 0; }
+
+body {
+  line-height: 1;
+  color: black;
+  background: white; }
+
+ol,
+ul {
+  list-style: none; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: separate;
+  border-spacing: 0; }
+
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal; }
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: ""; }
+
+blockquote,
+q {
+  quotes: "" ""; }
+
+/* 1.1 Variables */
+:root {
+  --theme_green: #a9e6d6;
+  --theme_blue: #043071;
+  --theme_white: #ffffff;
+  --theme_violet: #bac3d6;
+  --theme_grey: #f2f2f2;
+  --theme_lightgrey: #f8f8f8;
+  --serif_font: capitolina, Arial, Helvetica, sans-serif;
+  --san_serif_font: Work Sans, Arial, Helvetica, sans-serif; }
+
+/* 1.2 */
+/* 2. Layout */
+.color_swatch {
+  display: flex; }
+
+h1,
+h2 {
+  font-family: var(--serif_font);
+  line-height: 1.5; }
+
+h3,
+h4,
+p {
+  font-family: var(--san_serif_font);
+  line-height: 1.2; }
+
 h1 {
-  color: purple;
-  font-size: 46px;
-  text-decoration: underline; }
+  font-size: 45px; }
+
+h2 {
+  font-size: 30px; }
+
+section {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column; }
+
+header {
+  background-image: url(https://source.unsplash.com/1600x900/?design,web);
+  height: 500px; }
+
+.section-title {
+  align-self: center;
+  color: var(--theme_blue); }
+
+/* 3. Components */
+.color_div {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black; }
+  .color_div[data-color="white"] {
+    background: var(--theme_white); }
+  .color_div[data-color="blue"] {
+    background-color: var(--theme_blue); }
+  .color_div[data-color="violet"] {
+    background-color: var(--theme_violet); }
+  .color_div[data-color="green"] {
+    background-color: var(--theme_green); }
+  .color_div[data-color="grey"] {
+    background-color: var(--theme_grey); }
+  .color_div[data-color="lightgrey"] {
+    background-color: var(--theme_lightgrey); }
+  .color_div::after {
+    content: attr(data-color);
+    font-family: var(--serif_font); }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtYWluLmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/
