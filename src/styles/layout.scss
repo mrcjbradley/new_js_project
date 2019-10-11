@@ -1,5 +1,11 @@
 /* 1. GLOBAL STYLE */
 
+// DEBUGGING TOOLS
+
+// * {
+//   outline: 1px solid red;
+// }
+
 /* Reset */
 /* Source: http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/*/
 
@@ -81,6 +87,8 @@ body {
   line-height: 1;
   color: black;
   background: white;
+  margin: 0px;
+  overflow-x: hidden;
 }
 
 ol,
@@ -262,6 +270,11 @@ h4 {
 .horizon {
   border-top: 1px solid var(--theme_violet);
   margin: 45px;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
 }
 
 /* 3. Components */
